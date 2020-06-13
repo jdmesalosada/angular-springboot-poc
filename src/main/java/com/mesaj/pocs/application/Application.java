@@ -12,18 +12,20 @@ import java.util.stream.Stream;
 @SpringBootApplication
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         SpringApplication.run(Application.class, args);
     }
 
     @Bean
-    CommandLineRunner init(UserRepository userRepository) {
+    CommandLineRunner init(UserRepository userRepository){
         return args -> {
-            Stream.of("John", "Julie", "Jennifer", "Helen", "Rachel").forEach(name -> {
-                User user = new User(name, name.toLowerCase() + "@domain.com");
+            Stream.of("Julian", "Pepitp", "Goku", "Kamisama").forEach(name -> {
+                User user = new User(name, name.toLowerCase() + "@gmail.com");
                 userRepository.save(user);
             });
+
             userRepository.findAll().forEach(System.out::println);
         };
     }
+
 }
